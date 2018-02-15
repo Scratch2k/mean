@@ -1,4 +1,4 @@
-import Person from '../models/person.person';
+import Person from '../models/person.model';
 
 /**
  * Load person and append to req.

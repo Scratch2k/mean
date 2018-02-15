@@ -12,7 +12,7 @@ router.get('/health-check', (req, res) =>
 
 router.route('/')
   /** GET /api/users - Get list of users */
-  .get(parkCtrl.list).
+  .get(parkCtrl.list)
   .post(parkCtrl.create)
 
 router.route('/:parkId')
