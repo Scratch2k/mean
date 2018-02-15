@@ -7,6 +7,7 @@ import { INT } from 'graphql/language/kinds';
 /**
  * Person Schema
  */
+const LicenceSchema = new mongoose.Schema({ licence : {type: String}});
 const PersonSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -21,7 +22,7 @@ const PersonSchema = new mongoose.Schema({
   points_bal: {
     type: Number
   },
-  vehicles: [{ licence: String }]
+  vehicles: [LicenceSchema]
 });
 
 /**
