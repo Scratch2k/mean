@@ -5,6 +5,7 @@ import postRoutes from './post.route';
 import parkRoutes from './park.route';
 import ballotRoutes from './ballot.route';
 import personRoutes from './person.route';
+import allocationRoutes from './allocation.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -27,4 +28,5 @@ router.use('/ballot', ballotRoutes);
 
 router.use('/person', personRoutes);
 
+router.use('/allocations', allocationRoutes);
 export default router;

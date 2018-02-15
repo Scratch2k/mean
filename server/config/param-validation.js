@@ -18,11 +18,10 @@ export default {
     // POST /api/persons
     createPerson: {
       body: {
-        name: Joi.string().required(),
-        email: Joi.string().required(),
-        pass_no: Joi.string().required(),
-        points_bal: Joi.number().required(),
-        vehicles: Joi.array().items(Joi.string()).required()
+        name: Joi.string(),
+        email: Joi.string(),
+        pass_no: Joi.string(),
+        points_bal: Joi.number()
       }
     },
 
