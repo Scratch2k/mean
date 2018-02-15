@@ -84,7 +84,6 @@ function remove(params) {
 }
 
 function execute(req, res, next) {
-  console.log('in ballot/execute');
   const { limit = 50, skip = 0 } = req.query;
   var p, pe;
   Park.list({ limit, skip })
