@@ -108,7 +108,8 @@ function execute(req, res, next) {
             var allocation = new Allocation({
               ballot: '5a850517a4a7c8597e2d26c1',
               person: obj.personId,
-              park : obj.parkId
+              park : obj.parkId,
+              daysOfWeek: [1,2,3,4,5]
             });
 
             allocation.save()

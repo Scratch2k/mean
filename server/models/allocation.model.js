@@ -3,13 +3,17 @@ import mongoose from 'mongoose';
 import httpStatus from 'http-status';
 import APIError from '../helpers/APIError';
 
+
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
 /**
  * Allocation Schema
  */
 const AllocationSchema = new mongoose.Schema({
-    ballot: { type: Schema.Types.ObjectId, ref: 'Ballot' },
-    person: { type: Schema.Types.ObjectId, ref: 'Person' },
-    park: { type: Schema.Types.ObjectId, ref: 'Park' },
+    ballot: { type: ObjectId, ref: 'Ballot' },
+    person: { type: ObjectId, ref: 'Person' },
+    park: { type: ObjectId, ref: 'Park' },
     daysOfWeek: [Number],
     createdAt: {
         type: Date,
