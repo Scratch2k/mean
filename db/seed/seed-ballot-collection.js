@@ -1,4 +1,4 @@
-//mongo localhost:27017/ParkAnotherDay < seed-parks-collection.js
+//mongo localhost:27017/ParkAnotherDay < seed-ballots-collection.js
 use ParkAnotherDay  //db name
 
 db.ballots.remove({});

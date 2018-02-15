@@ -1,7 +1,7 @@
 import Park from '../models/park.model';
 
 /**
- * Load user and append to req.
+ * Load park and append to req.
  */
 function load(req, res, next, id) {
   Park.get(id)
@@ -83,7 +83,7 @@ function get(req, res) {
  * @returns {Park}
  */
 function remove(params) {
-  const user = req.user;
+  const park = req.park;
   user.remove()
     .then(deletedPark => res.json(deletedPark))
     .catch(e => next(e));
