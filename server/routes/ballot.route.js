@@ -11,13 +11,14 @@ router.get('/health-check', (req, res) =>
 );
 
 router.route('/')
-  /** GET /api/users - Get list of users */
+  /** GET /api/ballot - Get list of ballots */
   .get(ballotCtrl.list)
   .post(ballotCtrl.create)
 
 router.route('/:ballotId')
-  /** GET /api/park/:parkId - Get park */
+  /** GET /api/ballot/:ballotId - Get ballot */
   .get(ballotCtrl.get)
+  .put(ballotCtrl.update)
 
 /** Load park when API with parkId route parameter is hit */
 router.param('ballotId', ballotCtrl.load);

@@ -4,7 +4,7 @@ import Ballot from '../models/ballot.model';
  * Load ballot and append to req.
  */
 function load(req, res, next, id) {
-  Park.get(id)
+  Ballot.get(id)
     .then((ballot) => {
       req.ballot = ballot; // eslint-disable-line no-param-reassign
       return next();
@@ -14,8 +14,8 @@ function load(req, res, next, id) {
 
 /**
  * Get ballot list.
- * @property {number} req.query.skip - Number of users to be skipped.
- * @property {number} req.query.limit - Limit number of users to be returned.
+ * @property {number} req.query.skip - Number of ballots to be skipped.
+ * @property {number} req.query.limit - Limit number of ballots to be returned.
  * @returns {Ballot[]}
  */
 function list(req, res, next) {
@@ -49,7 +49,7 @@ function create(req, res, next) {
  * @property {date} req.body.start_date
  * @property {date} req.body.end_date
  * @property {string} req.body.status
- * @returns {Park}
+ * @returns {Ballot}
  */
 function update(req, res, next) {
   const ballot = req.ballot;
@@ -57,7 +57,7 @@ function update(req, res, next) {
   ballot.end_date = req.body.end_date;
   ballot.status = req.body.status;
 
-  user.save()
+  ballot.save()
     .then(savedBallot => res.json(savedBallot))
     .catch(e => next(e));
 }
@@ -76,7 +76,7 @@ function get(req, res) {
  */
 function remove(params) {
   const ballot = req.ballot;
-  user.remove()
+  ballot.remove()
     .then(deletedBallot => res.json(deletedBallot))
     .catch(e => next(e));
 }
