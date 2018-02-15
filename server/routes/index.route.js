@@ -22,6 +22,6 @@ router.use('/posts', postRoutes);
 
 router.use('/park', parkRoutes);
 
-router.use('/person', personRoutes);
+router.use('/persons', personRoutes);
 
 export default router;
