@@ -1,4 +1,6 @@
 import Ballot from '../models/ballot.model';
+import Park from '../models/park.model';
+import Person from '../models/person.model';
 
 /**
  * Load ballot and append to req.
@@ -82,7 +84,28 @@ function remove(params) {
 }
 
 function execute(req, res, next) {
-  return res.json({"result":"success"});
+  console.log('in ballot/execute');
+  const { limit = 50, skip = 0 } = req.query;
+  var p, pe;
+  Park.list({ limit, skip })
+    .then(parks => {
+      p = parks
+      Person.list({ limit, skip})
+        .then(people => {
+          pe = people
+
+          var jsonObj = [];
+          var personIndex;
+          var count = Math.min(parks.length, people.length);
+          for (let i = 0; i < count; i++) {
+              personIndex  = Math.floor((Math.random() * people.length));
+              jsonObj.push({"personId":people[personIndex].id,"parkId":parks[i].id});
+              people.splice(personIndex,1);
+          }
+
+          return res.json({"result":"success", "allocations": jsonObj});
+        });
+    });
 }
 
 export default { load, get, create, update, list, remove, execute };
