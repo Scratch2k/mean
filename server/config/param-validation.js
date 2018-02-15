@@ -15,6 +15,17 @@ export default {
     }
   },
 
+    // POST /api/persons
+    createPerson: {
+      body: {
+        name: Joi.string().required(),
+        email: Joi.string().required(),
+        pass_no: Joi.string().required(),
+        points_bal: Joi.number().required(),
+        vehicles: Joi.array().items(Joi.string()).required()
+      }
+    },
+
   // UPDATE /api/users/:userId
   updateUser: {
     body: {
@@ -33,6 +44,20 @@ export default {
     },
     params: {
       postId: Joi.string().hex().required()
+    }
+  },
+
+  // UPDATE /api/persons/:personId
+  updatePerson: {
+    body: {
+      name: Joi.string().required(),
+      email: Joi.string().required(),
+      pass_no: Joi.string().required(),
+      points_bal: Joi.number().required(),
+      vehicles: Joi.array().items(Joi.string()).required()
+    },
+    params: {
+      personId: Joi.string().hex().required()
     }
   },
 
