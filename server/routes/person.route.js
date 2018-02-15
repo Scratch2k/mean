@@ -8,9 +8,10 @@ const router = express.Router();
 router.route('/')
   /** GET /api/persons - Get list of persons */
   .get(personCtrl.list)
+  .post(personCtrl.create)
 
   /** POST /api/persons - Create new person */
-  .post(validate(paramValidation.createPerson), personCtrl.create);
+  //.post(validate(paramValidation.createPerson), personCtrl.create);
 
 router.route('/:personId')
   /** GET /api/person/:personId - Get person */
