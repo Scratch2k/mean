@@ -1,6 +1,7 @@
 import Ballot from '../models/ballot.model';
 import Park from '../models/park.model';
 import Person from '../models/person.model';
+import Allocation from '../models/allocation.model';
 
 /**
  * Load ballot and append to req.
@@ -100,6 +101,18 @@ function execute(req, res, next) {
               personIndex  = Math.floor((Math.random() * people.length));
               jsonObj.push({"personId":people[personIndex].id,"parkId":parks[i].id});
               people.splice(personIndex,1);
+          }
+
+          for (var index in jsonObj) {
+            var obj = jsonObj[index];
+            var allocation = new Allocation({
+              ballot: '5a850517a4a7c8597e2d26c1',
+              person: obj.personId,
+              park : obj.parkId
+            });
+
+            allocation.save()
+              .catch(e => next(e));
           }
 
           return res.json({"result":"success", "allocations": jsonObj});
