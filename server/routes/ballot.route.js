@@ -10,6 +10,9 @@ router.get('/health-check', (req, res) =>
   res.send('OK')
 );
 
+router.route('/execute')
+  .post(ballotCtrl.execute)
+
 router.route('/')
   /** GET /api/ballot - Get list of ballots */
   .get(ballotCtrl.list)

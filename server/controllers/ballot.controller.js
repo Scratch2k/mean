@@ -81,4 +81,8 @@ function remove(params) {
     .catch(e => next(e));
 }
 
-export default { load, get, create, update, list, remove };
+function execute(req, res, next) {
+  return res.json({"result":"success"});
+}
+
+export default { load, get, create, update, list, remove, execute };

@@ -7,6 +7,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
+import { Router } from '@angular/router';
 import { PostsService } from './posts/posts.service';
 /**
  * App Component
@@ -19,17 +20,30 @@ import { PostsService } from './posts/posts.service';
     './app.component.scss'
   ],
   template: `
-    <header>
-      <mat-toolbar color="primary">
-        <a [routerLink]="['/']" class="logotTxt">MEAN</a>
-        <a class="links" [routerLink]="['/posts']">Posts</a>
-        <a class="links" [routerLink]="['/react']">React</a>
-        <a class="links" href="/api/graphql">GraphQL browser</a>        
-      </mat-toolbar>
-    </header>
-    <router-outlet></router-outlet>
-    <footer>
-    </footer>
+  <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+      <div class="cover-container">
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">Park Another Day</h3>
+            <nav class="nav nav-masthead">
+              <a [ngClass]="getRoute('/')" href="#">Home</a>
+              <a [ngClass]="getRoute('/buy')" href="#">Buy</a>
+              <a [ngClass]="getRoute('/sell')" href="#">Sell</a>
+              <a [ngClass]="getRoute('/account')" href="#">Account</a>
+              <a [ngClass]="getRoute('/admin')" href="/admin">Admin</a>
+            </nav>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+        <div class="mastfoot">
+          <div class="inner">
+            <p>Brought to you by the <a href="#">Hack to the Future</a> team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   `,
   providers: [PostsService]
 })
@@ -38,14 +52,24 @@ export class AppComponent implements OnInit {
   public name = 'Mean stack starter';
   public url = 'https://mean.io';
 
+  public location: string;
+
   constructor(
-    public appState: AppState
+    public appState: AppState,
+    private router:Router
   ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
 
+  public getRoute(path){
+    if (this.router.url === path){
+      return "nav-link active";
+    }
+    else{
+      return "nav-link";
+    }
 }
 
 /**

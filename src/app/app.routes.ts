@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home';
+import { AdminComponent } from './admin';
 import { ReactComponent } from './react';
 import { ProfileComponent } from './profile';
 //import { angularProfileCard } from '../../components/main-profile/index';
@@ -9,6 +10,7 @@ import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'posts', loadChildren: './posts#PostsModule' },
   { path: 'profile', component: ProfileComponent },
   { path: 'react', component: ReactComponent },

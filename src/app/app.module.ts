@@ -35,6 +35,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { AdminComponent } from './admin';
 import { ReactComponent } from './react';
 import { ProfileComponent } from './profile';
 //import { angularProfileCard } from '../../components/main-profile/index';
@@ -64,6 +65,7 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
+    AdminComponent,
     ReactComponent,
     ProfileComponent,
     NoContentComponent,
